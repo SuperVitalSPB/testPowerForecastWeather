@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">test Power Forecast Weather</string>
+    <string name="by_day">by the day</string>
+    <string name="by_hour">by the hour</string>
+</resources>
