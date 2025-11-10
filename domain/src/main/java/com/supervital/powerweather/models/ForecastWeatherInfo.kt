@@ -1,12 +1,13 @@
 package com.supervital.powerweather.models
 
-import android.util.Log
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
 data class ForecastWeatherInfo(
-    val location: LocationInfo? = null, val current: CurrentInfo? = null, val forecast: ForecastInfo? = null
+    val location: LocationInfo? = null,
+    val current: CurrentInfo? = null,
+    val forecast: ForecastInfo? = null
 ) {
 
     fun getDateMain(): String {
@@ -43,8 +44,6 @@ data class ForecastWeatherInfo(
     }
 
     fun getForecastByHour(): List<ForecastItem> {
-        Log.d(TAG, "hour = ${forecast?.forecastday[0]?.hour[0]}")
-        Log.d(TAG, "hour = ${forecast?.forecastday[1]?.hour[1]}")
         return forecast?.forecastday[0]?.hour?.map { ForecastItem(it) } ?: emptyList()
     }
 
@@ -57,11 +56,10 @@ data class ForecastWeatherInfo(
     }
 
     companion object {
-        const val TAG = "ForecastWeatherInfo"
         const val EMPTY_STRING = ""
         const val TYPE_SYM_TEMP_C = "ºC"
         const val FORMAT_DATE = "dd.MM.yyyy"
-        const val FORMAT_TIME = "hh:mm"
+        const val FORMAT_TIME = "HH:mm"
         const val PREFIX_IMAGE = "https:"
     }
 }
