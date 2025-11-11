@@ -48,6 +48,7 @@ import androidx.compose.ui.geometry.Offset
 import com.supervital.powerweather.models.ForecastItem
 
 const val TAG = "WeatherMainScreen"
+const val COLOR_BACKGROUND_LIST = 0x6397D3FF
 
 @Composable
 fun WeatherMainScreen(
@@ -148,7 +149,7 @@ fun WeatherMainScreen(
                             onClick = {
                                 scope.launch {
                                     viewModel.let {
-                                        it.setPlaceSpb()
+                                        it.incIndexPlace()
                                         it.fetchData()
                                     }
                                 }
@@ -200,18 +201,18 @@ fun LazyColumnScreen(data: ForecastWeatherInfo?, isByDay: Boolean) {
             .fillMaxSize()
     ) {
         items( items = forecastList) { forecast ->
-            ItemForecast(forecastItem = forecast, isByDay)
+            ItemForecast(forecastItem = forecast)
         }
     }
 }
 
 @Composable
-fun ItemForecast(forecastItem: ForecastItem, isByDay: Boolean) {
+fun ItemForecast(forecastItem: ForecastItem) {
     with(forecastItem) {
         Row (
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color.LightGray)
+                .background(Color(COLOR_BACKGROUND_LIST))
                 .padding(16.dp)
         ){
             Column(
@@ -240,9 +241,6 @@ fun ItemForecast(forecastItem: ForecastItem, isByDay: Boolean) {
                     .padding(top = 3.dp, end = 8.dp)
                     .weight(1f)
             )
-
-
-
         }
     }
 }

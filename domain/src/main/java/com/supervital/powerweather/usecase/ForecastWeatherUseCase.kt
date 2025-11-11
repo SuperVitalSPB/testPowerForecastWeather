@@ -21,6 +21,7 @@ class ForecastWeatherUseCase @Inject constructor(
         const val KEY = "fa8b3df74d4042b9aa7135114252304" // Ключ
         const val PLACE_MOS = "55.7569,37.6151" // Москва, красная Площадь
         const val PLACE_SPB = "59.939,30.316"   // СПб, Дворцовая
+        const val PLACE_NOR = "69.20,88.13"     // Норильск
         const val DAYS = 3                    // кол-во дней прогноз
     }
 }

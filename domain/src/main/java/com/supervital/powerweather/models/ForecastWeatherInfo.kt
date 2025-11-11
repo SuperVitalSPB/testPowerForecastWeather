@@ -20,7 +20,7 @@ data class ForecastWeatherInfo(
     }
 
     fun getCity(): String {
-        return location?.region ?: EMPTY_STRING
+        return location?.name ?: EMPTY_STRING
     }
 
     fun getCurrentTemperature(): String {

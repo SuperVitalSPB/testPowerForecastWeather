@@ -13,21 +13,28 @@ class MainViewModel @Inject constructor(
     private val forecastWeatherUseCase: ForecastWeatherUseCase
 ) : ViewModel() {
 
-    var place = ForecastWeatherUseCase.PLACE_MOS
+    private var indexPlace = 0
+
+    private var places = listOf<String>(
+        ForecastWeatherUseCase.PLACE_MOS,
+        ForecastWeatherUseCase.PLACE_SPB,
+        ForecastWeatherUseCase.PLACE_NOR
+    )
+
 
     private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
     suspend fun fetchData() {
         _uiState.value = UiState.Loading
-        _uiState.value = forecastWeatherUseCase(place).fold(
+        _uiState.value = forecastWeatherUseCase(places[indexPlace]).fold(
             onSuccess = { value -> UiState.Success(value) },
-            onFailure = { exception -> UiState.Error( "${exception.message}") }
+            onFailure = { exception -> UiState.Error("${exception.message}") }
         )
     }
 
-    fun setPlaceSpb() {
-        place = ForecastWeatherUseCase.PLACE_SPB
+    fun incIndexPlace() {
+        indexPlace = (indexPlace + 1) % 3
     }
 
 }
