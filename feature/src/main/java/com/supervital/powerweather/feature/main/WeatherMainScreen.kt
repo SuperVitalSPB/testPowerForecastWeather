@@ -47,6 +47,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import com.supervital.powerweather.models.ForecastItem
 
+
 const val TAG = "WeatherMainScreen"
 const val COLOR_BACKGROUND_LIST = 0x6397D3FF
 

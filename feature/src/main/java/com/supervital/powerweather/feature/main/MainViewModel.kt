@@ -21,7 +21,6 @@ class MainViewModel @Inject constructor(
         ForecastWeatherUseCase.PLACE_NOR
     )
 
-
     private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
